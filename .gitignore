@@ -26,3 +26,6 @@ __pycache__
 driver.py
 sfstns.db
 /wiki/
+
+# Sphinx documentation build output
+/docs/_build/
