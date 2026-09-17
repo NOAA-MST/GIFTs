@@ -46,6 +46,8 @@ Run focused tests first, then `flake8 gifts tests` and `pytest --cov=gifts tests
 - Treat external IWXXM/XSD/RDF standards and compatibility changes as decisions requiring human confirmation when the repository does not already establish the target version or behavior.
 - Do not alter CI policy, package metadata, public XML contracts, bundled data, or generated artifacts without calling out the impact and obtaining confirmation when the task did not request it.
 
+Nested agents can be useful under `gifts/database/` for data-generation changes, `validation/` for schema/validation work, and `docs/` for documentation work. Add a nested `AGENTS.md` or more specific agent only when that subtree has rules not applicable to the whole repository; keep `gifts-docs.agent.md` as the documentation specialist.
+
 ## Completion Report
 
 Report:
@@ -54,5 +56,3 @@ Report:
 2. Tests, lint, build, or validation commands actually run and their results.
 3. Any warnings, skipped checks, generated artifacts, documentation conflicts, or remaining risks.
 4. Any decision that still requires maintainer confirmation.
-
-Nested agents can be useful under `gifts/database/` for data-generation changes, `validation/` for schema/validation work, and `docs/` for documentation work. Add a nested `AGENTS.md` or more specific agent only when that subtree has rules not applicable to the repository as a whole; keep `gifts-docs.agent.md` as the documentation specialist.
