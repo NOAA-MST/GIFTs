@@ -11,7 +11,7 @@ __pycache__
 # Setuptools build and distribution folders
 /.cache
 /.eggs
-/.gifts/
+/.venv/
 /build/
 /dist/
 /data/

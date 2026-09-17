@@ -17,6 +17,8 @@ Installing from source
 
    $ git clone https://github.com/NOAA-MDL/GIFTs.git
    $ cd GIFTs
+   $ python3 -m venv .venv
+   $ source .venv/bin/activate
    $ pip install .
 
 If you cannot install into the system ``site-packages``, add the checkout
