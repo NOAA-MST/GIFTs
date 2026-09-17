@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gifts"
+description = "IWXXM encoders for Annex3 TAC products"
+authors = [
+    { name = "Mark Oberfield - NOAA/NWS/OSTI/MDL/WIAD", email = "Mark.Oberfield@noaa.gov" },
+]
+maintainers = [
+    { name = "Mark Oberfield" },
+]
+license = { file = "LICENSE.md" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Text Processing :: Markup :: XML",
+    "License :: Public Domain",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "skyfield>=1.40,<2a0",
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+test = [
+    "flake8>=3.7,<4a0",
+    "pytest>=8.3",
+    "pytest-cov>=2.7,<3a0",
+]
+docs = [
+    "sphinx>=7.0",
+    "sphinx-rtd-theme>=2.0",
+    "myst-parser>=2.0",
+]
+
+[tool.setuptools_scm]
+fallback_version = "1.5.1"
+
+[tool.setuptools.packages.find]
+include = ["gifts*"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+"gifts.data" = ["*.rdf"]
+
+[tool.pytest.ini_options]
+addopts = "--verbose"

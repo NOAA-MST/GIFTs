@@ -27,11 +27,14 @@ Use the repository virtual environment `.gifts`; do not depend on the system Pyt
 
 - `make dev` creates `.gifts` and installs the editable package with test dependencies.
 - `make test` runs `pytest --cov=gifts tests` in `.gifts`.
-- `make lint` runs `flake8 --max-line-length=120 gifts tests` in `.gifts`.
-- `make build` runs `python setup.py sdist bdist_wheel` in `.gifts`.
+- `make lint` runs `flake8 gifts tests` in `.gifts` (config in `.flake8`, max-line-length 120).
+- `make build` runs `python -m build` in `.gifts`, producing sdist/wheel from `pyproject.toml`.
+- `make docs` installs `.[docs]` and runs `sphinx-build -b html docs docs/_build/html`.
 - `make clean` removes the virtual environment and caches; `make distclean` removes build and packaging artifacts.
 - From `gifts/database/`, run `.gifts/bin/python create_pickle_db.py` to regenerate `aerodromes.db` from `aerodromes.tbl`.
-- CI runs on Python 3.11 for pushes and pull requests to `master`, installs with `python setup.py install`, checks fatal flake8 codes (`E9,F63,F7,F82`), and runs `pytest`; see `.github/workflows/python-package.yml`.
+- CI runs on Python 3.11 for pushes and pull requests to `master`, installs with `pip install .[test]`, checks fatal flake8 codes (`E9,F63,F7,F82`), and runs `pytest --cov=gifts tests`; see `.github/workflows/python-package.yml`.
+- Package metadata, dependencies, and extras live in `pyproject.toml` (not `setup.py`/`setup.cfg`, which no longer exist); version is derived via `setuptools_scm` with `fallback_version = "1.5.1"` until the first git tag is cut.
+- If skyfield's `bsp_files` cache directory has permission issues at runtime, run `python scripts/setup_skyfield_bsp.py` once after installing.
 
 Run focused tests first, then `make lint` and `make test` for implementation changes. XML/schema behavior should also be checked with the relevant tests and the validation tooling under `validation/` when applicable. Do not claim a command was run unless it was run in the repository environment.
 

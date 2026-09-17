@@ -4,7 +4,7 @@ Installation & Requirements
 Prerequisites
 -------------
 
-- Python **3.9** or later (``python_requires = >=3.9`` in :file:`setup.cfg`).
+- Python **3.9** or later (``requires-python = ">=3.9"`` in :file:`pyproject.toml`).
 - `skyfield <https://rhodesmill.org/skyfield/>`_ ``>=1.40,<2a0`` — the only
   third-party runtime dependency, used by :mod:`gifts.swaDecoder` for
   astronomical calculations (day/night terminator, sun/moon position) needed
@@ -17,21 +17,34 @@ Installing from source
 
    $ git clone https://github.com/NOAA-MDL/GIFTs.git
    $ cd GIFTs
-   $ python setup.py install
+   $ pip install .
 
 If you cannot install into the system ``site-packages``, add the checkout
 directory to ``PYTHONPATH`` instead.
 
-Installing test/lint extras
------------------------------
+Installing test/lint/docs extras
+-----------------------------------
 
 .. code-block:: shell
 
    $ pip install .[test]
+   $ pip install .[docs]
 
-This installs ``pytest>=8.3``, ``pytest-cov>=2.7,<3a0``, and
-``flake8>=3.7,<4a0`` as declared in the ``[options.extras_require]`` section
-of :file:`setup.cfg`.
+``.[test]`` installs ``pytest>=8.3``, ``pytest-cov>=2.7,<3a0``, and
+``flake8>=3.7,<4a0``; ``.[docs]`` installs ``sphinx``, ``sphinx-rtd-theme``,
+and ``myst-parser``, as declared in the ``[project.optional-dependencies]``
+section of :file:`pyproject.toml`.
+
+Skyfield bsp_files directory
+-------------------------------
+
+If :mod:`gifts.swaDecoder` fails to write ephemeris files due to permissions
+on skyfield's ``bsp_files`` cache directory, run the following once after
+installing:
+
+.. code-block:: shell
+
+   $ python scripts/setup_skyfield_bsp.py
 
 Configuration before first use
 --------------------------------

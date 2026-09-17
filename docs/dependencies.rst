@@ -33,7 +33,14 @@ Test/lint (optional, ``pip install .[test]``)
 
 - ``pytest>=8.3``
 - ``pytest-cov>=2.7,<3a0``
-- ``flake8>=3.7,<4a0`` (max line length 120)
+- ``flake8>=3.7,<4a0`` (max line length 120, configured in :file:`.flake8`)
+
+Docs (optional, ``pip install .[docs]``)
+-------------------------------------------------
+
+- ``sphinx>=7.0``
+- ``sphinx-rtd-theme>=2.0``
+- ``myst-parser>=2.0``
 
 Validation tooling (separate from the library, ``validation/``)
 --------------------------------------------------------------------
