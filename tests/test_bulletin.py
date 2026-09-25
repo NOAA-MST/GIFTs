@@ -1,12 +1,11 @@
-import gzip
 import os
-import tempfile
-
 import pytest
+import tempfile
+import gzip
 
 import gifts.common.bulletin as bulletin
-from gifts.SWA import Encoder as SE
 from gifts.TCA import Encoder as TE
+from gifts.SWA import Encoder as SE
 
 tcaEncoder = TE()
 swaEncoder = SE()
@@ -109,11 +108,11 @@ STATUS: TEST="""
     document2 = collective1[0]
     #
     # And compared.
-    assert document2.get("gml:id") == document1.get("gml:id")
+    assert document2.get('gml:id') == document1.get('gml:id')
     #
     # And children removed
     document3 = collective3.pop()
-    assert document3.get("gml:id") == document1.get("gml:id")
+    assert document3.get('gml:id') == document1.get('gml:id')
     assert len(collective3) == 2
 
 
@@ -148,11 +147,11 @@ NXT MSG:              BFR 20180912/0000Z=
     # No filename provided
     fn = collective1.write()
     assert os.path.isfile(fn)
-    assert fn[-3:] == "xml"
+    assert fn[-3:] == 'xml'
     os.unlink(fn)
     #
     # Pass write method -- doesn't matter what the name is.
-    _fh = open(os.devnull, "wb")
+    _fh = open(os.devnull, 'wb')
     fn = collective1.write(_fh)
     assert fn is None
     #
@@ -161,7 +160,7 @@ NXT MSG:              BFR 20180912/0000Z=
     #
     # No filename provided
     fn = collective2.write(compress=True)
-    assert fn[-2:] == "gz"
+    assert fn[-2:] == 'gz'
     os.unlink(fn)
     #
     # Pass in a directory
@@ -209,36 +208,36 @@ $$
     #
     # Verify default - no WMO AHL line
     fn = collective.write()
-    _fh = open(fn, "r")
+    _fh = open(fn, 'r')
     first_line = _fh.readline()
-    assert first_line != "LKNT22 KNHC 151436\n"
+    assert first_line != 'LKNT22 KNHC 151436\n'
     _fh.close()
     os.unlink(fn)
     #
     # Insert WMO AHL line
-    filename = os.path.join(tempfile.gettempdir(), "asdfas.txt")
-    _fh = open(filename, "wb")
+    filename = os.path.join(tempfile.gettempdir(), 'asdfas.txt')
+    _fh = open(filename, 'wb')
     collective.write(_fh, header=True)
     _fh.close()
 
     # Verify first line is the WMO AHL
-    _fh = open(filename, "r")
+    _fh = open(filename, 'r')
     first_line = _fh.readline()
-    assert first_line == "LKNT22 KNHC 151436\n"
+    assert first_line == 'LKNT22 KNHC 151436\n'
     _fh.close()
     os.unlink(filename)
 
     collective2 = tcaEncoder.encode(test)
     fn = collective2.write(header=True)
-    assert fn[-4:] == ".txt"
+    assert fn[-4:] == '.txt'
     #
     # Although the external file has the extension 'txt', the internal bulletinIdentifier in the
     # XML document is still 'xml'
-    assert collective2._internalBulletinId[-4:] == ".xml"
+    assert collective2._internalBulletinId[-4:] == '.xml'
 
-    _fh = open(fn, "r")
+    _fh = open(fn, 'r')
     first_line = _fh.readline()
-    assert first_line == "LKNT22 KNHC 151436\n"
+    assert first_line == 'LKNT22 KNHC 151436\n'
     _fh.close()
     os.unlink(fn)
 
@@ -282,8 +281,8 @@ NXT MSG:                  NO MSG EXP
     # (header is ignored)
     #
     fn = collective.write(header=True, compress=True)
-    assert fn[-7:] == ".xml.gz"
-    assert collective._internalBulletinId[-7:] == ".xml.gz"
+    assert fn[-7:] == '.xml.gz'
+    assert collective._internalBulletinId[-7:] == '.xml.gz'
 
     assert os.path.basename(fn) == collective._internalBulletinId
 
@@ -292,13 +291,13 @@ NXT MSG:                  NO MSG EXP
     except Exception as exc:
         assert False, "Attempt to open gzip file failed: %s" % str(exc)
 
-    first_line = _fh.readline().decode("utf-8")
-    assert first_line != "LKNT23 KNHC 231458\n"
+    first_line = _fh.readline().decode('utf-8')
+    assert first_line != 'LKNT23 KNHC 231458\n'
     _fh.close()
     os.unlink(fn)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     test_empty()
     test_unlike()

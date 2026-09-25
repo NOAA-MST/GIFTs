@@ -10,7 +10,7 @@ import skyfield
 
 
 def main():
-    bsp_directory = os.path.join(skyfield.__path__[0], "bsp_files")
+    bsp_directory = os.path.join(skyfield.__path__[0], 'bsp_files')
     if not os.path.exists(bsp_directory):
         os.mkdir(bsp_directory)
     os.chmod(bsp_directory, 0o777)
