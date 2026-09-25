@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE catalog PUBLIC "-//OASIS//DTD XML Catalogs V1.1//EN" "http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd">
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    
+
   <!-- IWXXM template - IWXXM_VERSION to be replaced by the appropriate IWXXM version -->
   <rewriteSystem systemIdStartString="http://schemas.wmo.int/iwxxm/${IWXXM_VERSION}" rewritePrefix="${IWXXM_VERSION_DIR}"/>
 
@@ -16,5 +16,5 @@
 
   <!-- W3C -->
   <rewriteSystem systemIdStartString="http://www.w3.org" rewritePrefix="${INSTALL_DIR}/externalSchemas/org/w3c"/>
-  
+
 </catalog>

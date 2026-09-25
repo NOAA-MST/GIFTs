@@ -36,7 +36,7 @@ If you do not have sufficient  permissions to modify your Python's site-packages
 
 	$ setenv PATH ${PATH}:/path/to/install/directory/GIFTs/gifts:/path/to/install/directory/GIFTs/gifts/common # C-shell
 	% export PATH=${PATH}:/path/to/install/directory/GIFTs/gifts:/path/to/install/directory/GIFTs/gifts/common # Bourne-shell
-	
+
 The python files' `import` statements will need to be modified too, if you should use this alternative.
 
 ## Development checks
@@ -67,16 +67,16 @@ For international distribution, IWXXM reports, due to their increased character 
 
 Because of the character length of the `<MeteorologicalBulletin>`, the File Transfer Body Part shall be a compressed file using the gzip protocol. By default, the `.encode()` method of the [Encoder](https://github.com/mgoberfield/GIFTs/blob/master/gifts/common/Encoder.py#L15) class is to generate an uncompressed file when the bulletin.write() method is invoked. To generate a compressed `<MeteorologicalBulletin>` file for transmission over the AMHS is to set the `compress` flag to True in the Bulletin object's write() method, like so:
 
-    bulletin.write(compress=True)  
+    bulletin.write(compress=True)
 This will generate a gzip file containing the `<MeteorologicalBulletin>` suitable for transmission over the AMHS.
 
 ## Caveats
 The decoders were written to follow Annex 3 specifications for the TAC forms. If your observations or forecast products deviate significantly from Annex 3, then this software will likely refuse to encode the data into IWXXM.  Fortunately, solutions can be readily found, ranging from trivial to challenging (see United States METAR/SPECI [reports](https://nws.weather.gov/schemas/iwxxm-us/3.0/examples/metars)).
 
 # IWXXM Validation
-It is important that your IWXXM XML documents 'validate' before dissemination. If they don't, they may be rejected by your consumers. Separate from GIFTs, MDL has provided a convienent python script that invokes NCAR's CRUX utility along with IWXXM schemas, schematron and supporting data files to perform this crucial step before disseminating your IWXXM products. The software can be found in the `/validation` subdirectory. Please consult the [README](https://github.com/mgoberfield/GIFTs/blob/master/validation) file for that utility.  You can use this utility to validate the IWXXM XML files created by the `demo1.py` program. 
+It is important that your IWXXM XML documents 'validate' before dissemination. If they don't, they may be rejected by your consumers. Separate from GIFTs, MDL has provided a convienent python script that invokes NCAR's CRUX utility along with IWXXM schemas, schematron and supporting data files to perform this crucial step before disseminating your IWXXM products. The software can be found in the `/validation` subdirectory. Please consult the [README](https://github.com/mgoberfield/GIFTs/blob/master/validation) file for that utility.  You can use this utility to validate the IWXXM XML files created by the `demo1.py` program.
 
 -------------------
-<sup>1</sup>Yes, I know the project name is presumptuous. I apologize.  
-<sup>2</sup>_Guidelines for the Implementation of OPMET Data Exchange using IWXXM, Fourth Edition - November 2020_  
+<sup>1</sup>Yes, I know the project name is presumptuous. I apologize.
+<sup>2</sup>_Guidelines for the Implementation of OPMET Data Exchange using IWXXM, Fourth Edition - November 2020_
 <sup>3</sup>_Manual on Codes, International Codes, Volume I.3, Annex II to the WMO Technical Regulations, Part D - Representations derived from data models, 2019 edition_, ref. FM 201-16

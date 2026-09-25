@@ -15,7 +15,7 @@ This flat file consists of the following fields, separated by '|' characters:
 
 1. ICAO identfier of the aerodrome.  Matches the following regular expression `[A-Z]{4}` (required)
 2. IATA identifier/designator of the aerodrome. Matches the following regular expression: `[A-Z]{3}` (optional)
-3. Alternate identifier (not ICAO nor IATA). Matches the following regular expression: `[A-Z0-9]{3,6}` (optional) 
+3. Alternate identifier (not ICAO nor IATA). Matches the following regular expression: `[A-Z0-9]{3,6}` (optional)
 4. Full name of the aerodrome, up to 60 characters. (optional)
 5. Latitude of aerodrome in degrees.  Matches the following regular expression: `[-]?\d{1,2}\.\d{0,5}` (South is negative) (required)
 6. Longitude of aerodrome in degrees.  Matches the following regular expression: `[-]?\d{1,3}\.\d{0,5}` (West is negative) (required)

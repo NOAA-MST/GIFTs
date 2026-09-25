@@ -9,11 +9,11 @@
 #
 # Field #1 = ICAO identifier - 4 characters (required)
 # Field #2 = IATA identifier - 3 characters (optional)
-# Field #3 = Alternate identifier 3-6 characters (optional) 
+# Field #3 = Alternate identifier 3-6 characters (optional)
 # Field #4 = Full name of aerodrome, up to 60 characters (optional)
 # Field #5 = Latitude of aerodrome in degrees (decimal)  (southern latitudes are negative) (required)
 # Field #6 = Longitude of aerodrome in degrees (decimal) (western longitudes are negative) (required)
 # Field #7 = Elevation of aerodrome in metres (required)
-# 
+#
 AAAD|   |      |ADELAIDE AIRPORT                                            |-34.92   | 138.52   |4
 KDCA|DCA|      |RONALD REAGAN/WASHINGTON NATIONAL AIRPORT                   | 38.84833| -77.03417|4

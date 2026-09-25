@@ -166,7 +166,7 @@ If GML checks are enabled, the algorithm has the option to query code registries
 To run:
 -------
 
-If the python and java interpeters are in your execution PATH, then 
+If the python and java interpeters are in your execution PATH, then
 
       iwxxmValidator.py <directorypathtoXMLdocuments>
 
@@ -186,7 +186,7 @@ Another repository of examples is the WMO-IM GitHub site: https://github.com/wmo
 
 However, after genuine effort on your part, you cannot figure out the problem with your XML document, please describe your issue in an e-mail to the WMO AvData task team at this address for assistance:
 
-tt-avdata (AT) groups wmo int 
+tt-avdata (AT) groups wmo int
 
 [spaces and periods removed to avoid spam e-mails]
 

@@ -1,9 +1,13 @@
+exclude: ^(\.github/agents/|validation/externalSchemas/)
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
+        types_or: [python, yaml, markdown, toml, ini, text]
       - id: end-of-file-fixer
+        types_or: [python, yaml, markdown, toml, ini, text]
       - id: check-yaml
       - id: check-added-large-files
       - id: check-ast
