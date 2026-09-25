@@ -39,6 +39,16 @@ If you do not have sufficient  permissions to modify your Python's site-packages
 	
 The python files' `import` statements will need to be modified too, if you should use this alternative.
 
+## Development checks
+Install the development tooling and enable the git hooks before committing changes:
+
+    $ pip install .[test]
+    $ pre-commit install
+
+Run the full hook set at any time with:
+
+    $ pre-commit run --all-files
+
 ## Configuration
 
 ### xmlConfig
