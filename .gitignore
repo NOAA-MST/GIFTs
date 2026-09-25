@@ -20,6 +20,7 @@ __pycache__
 
 # Testing debris
 /.coverage
+/coverage.xml
 /.coveragerc
 /.mypy_cache
 /.pytest_cache
