@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [ master ]
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   build:
 
@@ -33,4 +37,9 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     - name: Test with pytest
       run: |
-        pytest --cov=gifts tests
+        pytest --cov=gifts --cov-report=xml tests
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+        files: ./coverage.xml
+        use_oidc: true
