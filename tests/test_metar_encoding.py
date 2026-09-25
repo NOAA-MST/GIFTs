@@ -694,13 +694,13 @@ METAR BIAR 290000Z /////KT 1000 R01/1000N R02/1000D R03/1000U R04/1000 ////// //
     for rvr in rvrs:
         rwy = rvr.find("%sdesignator" % aixm).text
         if rwy == "01":
-            rvr[0].get("pastTendency") == "NO_CHANGE"
+            assert rvr[0].get("pastTendency") == "NO_CHANGE"
         elif rwy == "02":
-            rvr[0].get("pastTendency") == "DOWNWARD"
+            assert rvr[0].get("pastTendency") == "DOWNWARD"
         elif rwy == "03":
-            rvr[0].get("pastTendency") == "UPWARD"
+            assert rvr[0].get("pastTendency") == "UPWARD"
         elif rwy == "04":
-            rvr[0].get("pastTendency") == "MISSING_VALUE"
+            assert rvr[0].get("pastTendency") == "MISSING_VALUE"
         else:
             assert True is False
 

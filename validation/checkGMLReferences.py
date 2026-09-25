@@ -38,6 +38,7 @@ def readIgnoredURLs(filename):
 def check_GML_references(examplesDirectory, iwxxm_version, internet=False):
     #
     # Find all XML files in directory
+    ignoredURLs = []
     if os.path.isfile(os.path.join(os.getcwd(), "ignoredURLs.txt")):
         ignoredURLs = readIgnoredURLs(os.path.join(os.getcwd(), "ignoredURLs.txt"))
 

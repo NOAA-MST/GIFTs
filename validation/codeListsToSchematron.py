@@ -124,15 +124,21 @@ def fetchLocalCopy(source, suffix, destinationDirectory):
         print("ERROR: Unable to access %s" % source)
         return
 
-    table = etree.HTML(response.text).find("body/table")
+    html = etree.HTML(response.text)
+    if html is None:
+        print("ERROR: Unable to parse directory listing at %s" % source)
+        return
+
+    table = html.find("body/table")
+    if table is None:
+        print("ERROR: Unable to locate directory listing table at %s" % source)
+        return
+
     for schemaFile in [a.get("href") for a in table.iterfind(".//a[@href]") if a.get("href").endswith(suffix)]:
         schemaContents = requests.get("%s/%s" % (source, schemaFile))
         if schemaContents.status_code == 200:
-            with open(os.path.join(destinationDirectory, schemaFile), "w") as _fh:
-                try:
-                    _fh.write(schemaContents.text)
-                except UnicodeEncodeError:
-                    _fh.write(schemaContents.text.encode("utf-8"))
+            with open(os.path.join(destinationDirectory, schemaFile), "w", encoding="utf-8") as _fh:
+                _fh.write(schemaContents.text)
         else:
             print("Unable to write %s in %s (%s)" % (schemaFile, destinationDirectory, schemaContents.status_code))
 
@@ -145,11 +151,8 @@ def download_codelist(codeListPath, schematronPath):
     r = requests.get(codeListPath, headers=headers)
     localCodeListFile = os.path.join(schematronPath, parseLocalCodeListFile(codeListPath))
     if r.status_code == 200:
-        with open(localCodeListFile, "w") as _fh:
-            try:
-                _fh.write(r.text)
-            except UnicodeEncodeError:
-                _fh.write(r.text.encode("utf-8"))
+        with open(localCodeListFile, "w", encoding="utf-8") as _fh:
+            _fh.write(r.text)
     else:
         print("ERROR: Could not load code list at %s!" % codeListPath)
 
