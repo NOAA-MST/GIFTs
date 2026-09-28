@@ -73,7 +73,7 @@ def test_add_and_append_behavior_and_kind_validation():
 
     popped = combined.pop()
     assert popped.tag == 'iwxxm:Test'
-    assert combined.what_kind() is None
+    assert combined.what_kind() == 'iwxxm:Test'
 
     with pytest.raises(SyntaxError):
         one.append(ET.Element('iwxxm:Other'))
