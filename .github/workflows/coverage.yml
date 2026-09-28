@@ -26,9 +26,10 @@ jobs:
         python -m pip install .[test]
     - name: Test with pytest coverage
       run: |
-        pytest --cov=gifts --cov-report=xml tests
+        pytest --cov=gifts --cov-report=xml:coverage.xml tests
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v5
       with:
         files: ./coverage.xml
+        disable_search: true
         token: ${{ secrets.CODECOV_TOKEN }}
