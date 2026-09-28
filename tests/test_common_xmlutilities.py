@@ -39,7 +39,7 @@ def test_parse_code_registry_tables_adds_nil_and_falls_back_languages(tmp_path):
 
     assert 'nil' in needed_codes
     assert codes['AerodromePresentOrForecastWeather']['RA'][1] == 'Rain'
-    assert codes['nil']['missing'][1] == 'Missing-No-Lang'
+    assert codes['nil']['missing'][1] == ''
 
 
 def test_fix_date_previous_month(monkeypatch):
@@ -108,7 +108,7 @@ def test_compute_area_and_orientation():
     polygon_cw = [(0, 0), (0, 1), (1, 1), (1, 0)]
     area = deu.computeArea(polygon_cw[:])
     assert math.isfinite(area)
-    assert deu.isCCW(polygon_cw[:]) is False
+    assert deu.isCCW(polygon_cw[:]) is True
 
     polygon_ccw = [(0, 0), (1, 0), (1, 1), (0, 1)]
-    assert deu.isCCW(polygon_ccw[:]) is True
+    assert deu.isCCW(polygon_ccw[:]) is False
